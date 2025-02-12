@@ -2,6 +2,9 @@ import Head from 'next/head';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import RegisterForm from '../components/RegisterForm';
+import Solutions from '../components/Solutions';
+import Benefits from '../components/Benefits';
+import Blog from '../components/Blog';
 import styled from 'styled-components';
 
 const MainContainer = styled.main`
@@ -22,7 +25,11 @@ export default function Home() {
       <MainContainer>
         <Hero />
         <RegisterForm />
+        
       </MainContainer>
+      <Solutions />
+      <Benefits />
+      <Blog />
     </>
   );
 }
