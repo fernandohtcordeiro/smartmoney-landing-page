@@ -1,54 +1,33 @@
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { getBlogPosts } from "../services/api"; // Importa a função que criamos
 
-const blogPosts = [
-  {
-    image: "/img/blog-image.jpg",
-    category: "Business",
-    date: "Outubro 2021",
-    title: "Sollicitudin a sagittis, risus nisl, fermentum, tincidunt dolor",
-    author: "Savannah Nguyen",
-    authorImage: "/img/avatar1.png",
-  },
-  {
-    image: "/img/blog-image.jpg",
-    category: "Business",
-    date: "Outubro 2021",
-    title: "Sollicitudin a sagittis, risus nisl, fermentum, tincidunt dolor",
-    author: "Savannah Nguyen",
-    authorImage: "/img/avatar1.png",
-  },
-  {
-    image: "/img/blog-image.jpg",
-    category: "Business",
-    date: "Outubro 2021",
-    title: "Sollicitudin a sagittis, risus nisl, fermentum, tincidunt dolor",
-    author: "Savannah Nguyen",
-    authorImage: "/img/avatar1.png",
-  },
-  {
-    image: "/img/blog-image.jpg",
-    category: "Business",
-    date: "Outubro 2021",
-    title: "Sollicitudin a sagittis, risus nisl, fermentum, tincidunt dolor",
-    author: "Savannah Nguyen",
-    authorImage: "/img/avatar1.png",
-  },
-  {
-    image: "/img/blog-image.jpg",
-    category: "Business",
-    date: "Outubro 2021",
-    title: "Outro post para testar paginação",
-    author: "Savannah Nguyen",
-    authorImage: "/img/avatar1.png",
-  },
-];
+// Definição do tipo para os posts
+type BlogPost = {
+  id: string;
+  title: string;
+  date: string;
+  image: string;
+  author: string;
+  authorImage: string;
+};
 
 export default function Blog() {
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const blogPosts = await getBlogPosts();
+      setPosts(blogPosts);
+    }
+    fetchData();
+  }, []);
+
   return (
     <section className="blog-section">
       {/* Cabeçalho com título e setas corretamente posicionadas */}
@@ -59,10 +38,10 @@ export default function Blog() {
         </div>
         <div className="blog-navigation">
           <button className="swiper-button-prev">
-            <Image src="/icons/arrow-left.svg" alt="Voltar" width={18} height={18} />
+            <Image src="/img/Vector453.png" alt="Voltar" width={18} height={18} />
           </button>
           <button className="swiper-button-next">
-            <Image src="/icons/arrow-right.svg" alt="Avançar" width={18} height={18} />
+            <Image src="/img/Vector452.png" alt="Avançar" width={18} height={18} />
           </button>
         </div>
       </div>
@@ -78,7 +57,7 @@ export default function Blog() {
         pagination={{
           el: ".swiper-pagination",
           clickable: true,
-          dynamicBullets: true, // Ativa bolinhas dinâmicas apenas quando necessário
+          dynamicBullets: true,
         }}
         breakpoints={{
           320: { slidesPerView: 1 },
@@ -87,26 +66,30 @@ export default function Blog() {
           1280: { slidesPerView: 4 },
         }}
       >
-        {blogPosts.map((post, index) => (
-          <SwiperSlide key={index}>
-            <div className="blog-card">
-              <Image src={post.image} alt={post.title} width={280} height={200} />
-              <div className="blog-content">
-                <p className="blog-category">
-                  <span className="blue-text">{post.category}</span> - {post.date}
-                </p>
-                <h3>{post.title}</h3>
-                <div className="blog-author">
-                  <Image src={post.authorImage} alt={post.author} width={35} height={35} />
-                  <div>
-                    <span className="blog-author-name">{post.author}</span>
-                    <p className="blog-author-role">Autor</p>
+        {posts.length === 0 ? (
+          <p>Carregando posts...</p>
+        ) : (
+          posts.map((post) => (
+            <SwiperSlide key={post.id}>
+              <div className="blog-card">
+                <Image src={post.image} alt={post.title} width={280} height={340} />
+                <div className="blog-content">
+                  <p className="blog-category">
+                    <span className="blue-text">Tecnologia</span> - {post.date}
+                  </p>
+                  <h3>{post.title}</h3>
+                  <div className="blog-author">
+                    <Image src={post.authorImage} alt={post.author} width={35} height={35} />
+                    <div>
+                      <span className="blog-author-name">{post.author}</span>
+                      <p className="blog-author-role">Autor</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
+            </SwiperSlide>
+          ))
+        )}
       </Swiper>
 
       {/* Paginação abaixo do carrossel */}

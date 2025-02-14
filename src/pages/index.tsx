@@ -5,7 +5,12 @@ import RegisterForm from '../components/RegisterForm';
 import Solutions from '../components/Solutions';
 import Benefits from '../components/Benefits';
 import Blog from '../components/Blog';
+import ExclusiveAdvantages from "../components/ExclusiveAdvantages";
 import styled from 'styled-components';
+import CallToActionCards from '@/components/CallToActionCards';
+import Faq from '@/components/Faq';
+import Footer from '@/components/footer';
+
 
 const MainContainer = styled.main`
   display: flex;
@@ -30,6 +35,10 @@ export default function Home() {
       <Solutions />
       <Benefits />
       <Blog />
+      <ExclusiveAdvantages />
+      <CallToActionCards />
+      <Faq />
+      <Footer />
     </>
   );
 }

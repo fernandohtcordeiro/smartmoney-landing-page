@@ -1,11 +1,26 @@
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 export default function Header() {
-  return (
-    <header>
-      <div className="logo-container">
-      <Image src="/img/icon.svg" alt="SmartMoney Logo" width={30} height={30} />
+  const [isScrolled, setIsScrolled] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <header className={isScrolled ? "header scrolled" : "header"}>
+      <div className="logo-container">
+        <Image src="/img/icon.svg" alt="SmartMoney Logo" width={30} height={30} />
         <h1>Smart<span>Money</span></h1>
       </div>
       <nav>

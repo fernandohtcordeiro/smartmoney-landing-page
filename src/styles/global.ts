@@ -14,62 +14,81 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   /* ========== HEADER ========== */
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
-    background: #fff;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
-  }
+ 
+/* Estilos padrão do header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: #f5f5f5; 
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease-in-out;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
 
-  .logo-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+/* Quando o usuário rolar a página */
+.scrolled {
+  position: fixed;
+  background: #fff; /* Muda para branco ao rolar */
+  padding: 10px 40px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
 
-  .logo-container h1 {
-    font-size: 20px;
-    font-weight: 600;
-    color: #1a1a1a;
-  }
+/* Estilos do logo */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-  .logo-container h1 span {
-    color: #0070f3;
-  }
+.logo-container h1 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
 
-  nav {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-  }
+.logo-container h1 span {
+  color: #0070f3;
+}
 
-  nav a {
-    color: #333;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 16px;
-    transition: 0.3s;
-  }
+/* Estilos do menu de navegação */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
 
-  nav a:hover {
-    color: #0070f3;
-  }
+nav a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  transition: 0.3s;
+}
 
-  .register-button {
-    background: #0070f3;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: 0.3s;
-  }
+nav a:hover {
+  color: #0070f3;
+}
 
-  .register-button:hover {
-    background: #0056b3;
-  }
+/* Botão de cadastro */
+.register-button {
+  background: #0070f3;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.register-button:hover {
+  background: #0056b3;
+}
 
   /* ========== HERO SECTION ========== */
   .hero-section {
@@ -82,19 +101,34 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .hero-content {
-    max-width: 50%;
+    max-width: 68%;
   }
 
   .hero-content h1 {
     font-size: 3rem;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 68px;
   }
 
   .hero-content p {
     font-size: 1.2rem;
-    color: #b0b3c1;
+    color:rgb(255, 255, 255);
+    font-family: Archivo;
+    font-weight: 400;
+    
+    line-height: 27px;
+    letter-spacing: 0%;
+    padding-bottom: 30px;
+
   }
+
+  hr {
+    border: 0;
+    border-top: 2px solid #094CFA; 
+    width: 32px; 
+}
+
+
 
   .hero-stats {
     display: flex;
@@ -103,18 +137,31 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .hero-stats div {
-    text-align: center;
+    text-align: left;
   }
 
   .hero-stats h2 {
-    font-size: 2rem;
+   
     font-weight: bold;
     color: #ffffff;
+    font-family: Archivo;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 50px;
+    letter-spacing: 0%;
+    padding-bottom: 10px;
+
   }
 
   .hero-stats p {
-    font-size: 1rem;
+  
     color: #b0b3c1;
+    font-family: Calibri;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0%;
+
   }
 
   /* ========== REGISTER FORM ========== */
@@ -288,7 +335,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .benefit-item {
-    text-align: center;
+    text-align: left;
     max-width: 25%;
   }
 
@@ -298,22 +345,36 @@ export const GlobalStyle = createGlobalStyle`
     border-radius: 10px;
     display: inline-block;
     margin-bottom: 15px;
+    text-align: left;
   }
 
   .benefit-item h3 {
-    font-size: 1.3rem;
-    font-weight: bold;
+    
     margin-bottom: 10px;
+    text-align: left;
+    font-family: Archivo;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: 0%;
+
   }
 
   .benefit-item p {
-    font-size: 1rem;
+    
     color: #666;
     line-height: 1.5;
-  }
+    text-align: left;
+    font-family: Archivo;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0%;
+
+      }
     /* ========== BLOG SECTION ========== */
     .blog-section {
-    padding: 80px 40px;
+    padding: 80px 80px;
     background: #f1f5f9;
     text-align: left;
     position: relative;
@@ -327,6 +388,10 @@ export const GlobalStyle = createGlobalStyle`
     position: relative;
   }
 
+  .blog-title{
+    
+
+      }
   .blog-subtitle {
     font-size: 1rem;
     color: #0070f3;
@@ -335,16 +400,24 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .blog-section h2 {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #1a1a1a;
-  }
+    
+  font-family: Archivo;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 50px;
+  letter-spacing: 0%;
+    }
 
   .blog-card {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+    width: 280px;
+    height: 520px;
+    top: 197px;
+    left: 111px;
+    gap: 32px;
+
+   
+   
+    
     transition: transform 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -356,25 +429,58 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .blog-content {
-    padding: 15px;
+    width: 279;
+    height: 156;
+    gap: 8px;
+
   }
+  
 
   .blog-category {
     font-size: 0.9rem;
     color: #0070f3;
     font-weight: bold;
     margin-bottom: 10px;
+    font-family: Archivo;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+   
+
   }
 
   .blog-category .blue-text {
     color: #0070f3;
   }
 
+  .blog-category .blue-text, span {
+    color: rgb(255, 255, 255);
+}
+
+.texto-star {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #18142A; 
+    border: 1px solid #3D3253; 
+    border-radius: 999px; 
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+
   .blog-card h3 {
     font-size: 1.1rem;
     font-weight: bold;
     color: #333;
     margin-bottom: 10px;
+    font-family: Archivo;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    margin-right:30px;
+
   }
 
   .blog-author {
@@ -382,6 +488,14 @@ export const GlobalStyle = createGlobalStyle`
     align-items: center;
     gap: 10px;
     margin-top: 15px;
+  
+
+    font-family: Archivo;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+   
+
   }
 
   .blog-author img {
@@ -434,7 +548,7 @@ export const GlobalStyle = createGlobalStyle`
 
   /* Paginação */
   .swiper-pagination {
-    margin-top: 20px;
+    margin-top: 25px;
     text-align: center;
     position: relative !important;
     z-index: 10;
